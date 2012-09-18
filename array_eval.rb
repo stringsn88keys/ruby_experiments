@@ -1,14 +1,14 @@
 class Module
   attr_accessor :array
 
-	def array_accessor( *symbols )
-	  self.array||=[]
-	  puts symbols
-	  symbols.each { |symbol|
-	    self.array << symbol
-	    attr_accessor symbol
-	  }
-	end
+  def array_accessor( *symbols )
+    self.array||=[]
+    puts symbols
+    symbols.each do |symbol|
+      self.array << symbol
+      attr_accessor symbol
+    end 
+  end
 end
 
 module ArrayAccessor
@@ -35,11 +35,9 @@ tt.a = 5
 tt.b = 6
 tt.c = 7
 
-puts tt[0]
-puts tt[0]
-
-puts tt[1]
-puts tt[2]
-puts tt[3]
-tt[3]='f'
-puts tt.d
+puts tt[0] # :a
+puts tt[1] # :b
+puts tt[2] # :c
+puts tt[3] # :d
+tt[3]='f'  # :d
+puts tt.d  # [3]
